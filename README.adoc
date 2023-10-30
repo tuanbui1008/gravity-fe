@@ -1,0 +1,61 @@
+environment
+node version 12
+
+
+
+= Gravitee Management Webui
+
+ifdef::env-github[]
+image:https://ci.gravitee.io/buildStatus/icon?job=gravitee-io/gravitee-management-webui/master["Build status", link="https://ci.gravitee.io/job/gravitee-io/job/gravitee-management-webui/"]
+image:https://badges.gitter.im/Join Chat.svg["Gitter", link="https://gitter.im/gravitee-io/gravitee-io?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"]
+endif::[]
+
+== Install
+
+**NPM tasks are ran from this base dir.**
+
+- Install http://nodejs.org[nodejs], it comes with http://npmjs.org[npm]
+- Then install node modules with:
+```
+npm install
+```
+
+**If you're working on Windows**
+
+- Install Microsoft's windows-build-tools using npm install --global --production windows-build-tools from an elevated PowerShell or CMD.exe (run as Administrator).
+- Restart your computer
+- Re-run npm install
+
+If you don't install this library, you may have such errors when you'll do npm install :
+```
+ERROR in ./~/css-loader?importLoaders=1!./~/sass-loader!./~/postcss-loader!./src/index.scss Module build failed: Error: Node Sass does not yet support your current environment: Windows 64-bit with Unsupported runtime (57) For more information on which environments are supported please see: https://github.com/sass/node-sass/releases/tag/v3.13.1
+```
+
+== Tasks
+
+If you wanna serve the built version on dev mode :
+```
+npm run serve
+```
+
+If you wanna serve the built version on production mode :
+```
+npm run serve:dist
+```
+
+If you wanna serve the built version pointing on the demo's server :
+```
+npm run serve:demo
+```
+
+If you wanna serve the built version pointing on the nightly's server :
+```
+npm run serve:nightly
+```
+
+If you wanna launch e2e (end to end) tests with Protractor on the built version :
+```
+npm run buildNoReg
+```
+
+Tested and approved with the https://www.browserstack.com[BrowserStack platform]

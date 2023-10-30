@@ -1,0 +1,158 @@
+<!--
+
+    Copyright (C) 2015 The Gravitee team (http://gravitee.io)
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<div flex>
+    <div layout="row" flex>
+        <div class="gv-sub-menu menu">
+            <div class="md-headline">Settings</div>
+
+            <div class="aui-nav-heading"
+                 ng-if="$ctrl.settingsMenu.apiPortalHeader.perm
+                 || $ctrl.settingsMenu.clientRegistration.perm
+                 || $ctrl.settingsMenu.identityProviders.perm
+                 || $ctrl.settingsMenu.portalSettings.perm
+                 || $ctrl.settingsMenu.documentations.perm
+                 || $ctrl.settingsMenu.metadata.perm
+                 || $ctrl.settingsMenu.settings.perm
+                 || $ctrl.settingsMenu.topApis.perm
+                 || $ctrl.settingsMenu.views.perm">
+                <strong>Portal</strong>
+            </div>
+            <ul class="aui-nav">
+              <li class="iterable-item"
+                  ng-class="{'aui-nav-selected': $ctrl.$state.includes('management.settings.analytics') ||
+                  $ctrl.$state.includes('management.settings.dashboard') || $ctrl.$state.includes('management.settings.dashboardnew')}"
+                  ng-if="$ctrl.settingsMenu.analytics.perm">
+                  <a class="execute" ui-sref="{{$ctrl.settingsMenu.analytics.goTo}}">Analytics</a>
+              </li>
+              <li class="iterable-item" ui-sref-active="aui-nav-selected"
+                  ng-if="$ctrl.settingsMenu.apiPortalHeader.perm">
+                <a class="execute" ui-sref="{{$ctrl.settingsMenu.apiPortalHeader.goTo}}">API Portal Headers</a>
+              </li>
+              <li class="iterable-item"
+                  ng-class="{'aui-nav-selected': $ctrl.$state.includes('management.settings.apiQuality') || $ctrl.$state.includes('management.settings.qualityRule') || $ctrl.$state.includes('management.settings.qualityRulenew')}"
+                  ng-if="$ctrl.settingsMenu.portalSettings.perm">
+                <a class="execute" ui-sref="{{$ctrl.settingsMenu.apiQuality.goTo}}">API Quality</a>
+              </li>
+              <li class="iterable-item"
+                  ng-class="{'aui-nav-selected': $ctrl.$state.includes('management.settings.identityproviders')}"
+                  ng-if="$ctrl.settingsMenu.identityProviders.perm">
+                <a class="execute" ui-sref="{{$ctrl.settingsMenu.identityProviders.goTo}}">Authentication</a>
+              </li>
+              <li class="iterable-item"
+                  ng-class="{'aui-nav-selected': $ctrl.$state.includes('management.settings.clientregistrationproviders')}"
+                  ng-if="$ctrl.settingsMenu.clientRegistration.perm">
+                <a class="execute" ui-sref="{{$ctrl.settingsMenu.clientRegistration.goTo}}">Client Registration</a>
+              </li>
+                <li class="iterable-item" ui-sref-active="aui-nav-selected"
+                    ng-if="$ctrl.settingsMenu.documentations.perm">
+                    <a class="execute" ui-sref="{{$ctrl.settingsMenu.documentations.goTo}}">Documentation</a>
+                </li>
+                <li class="iterable-item" ui-sref-active="aui-nav-selected"
+                    ng-if="$ctrl.settingsMenu.metadata.perm">
+                    <a class="execute" ui-sref="{{$ctrl.settingsMenu.metadata.goTo}}">Metadata</a>
+                </li>
+
+              <li class="iterable-item" ui-sref-active="aui-nav-selected"
+                  ng-if="$ctrl.settingsMenu.portalSettings.perm">
+                <a class="execute" ui-sref="{{$ctrl.settingsMenu.portalSettings.goTo}}">Settings</a>
+              </li>
+
+                <li class="iterable-item" ui-sref-active="aui-nav-selected"
+                    ng-if="$ctrl.settingsMenu.topApis.perm">
+                    <a class="execute" ui-sref="{{$ctrl.settingsMenu.topApis.goTo}}">Top APIs</a>
+                </li>
+
+              <li class="iterable-item"
+                  ng-class="{'aui-nav-selected': $ctrl.$state.includes('management.settings.views') || $ctrl.$state.includes('management.settings.view') || $ctrl.$state.includes('management.settings.viewnew')}"
+                  ng-if="$ctrl.settingsMenu.views.perm">
+                <a class="execute" ui-sref="{{$ctrl.settingsMenu.views.goTo}}">Views</a>
+              </li>
+            </ul>
+
+            <div class="aui-nav-heading"
+                 ng-if="$ctrl.settingsMenu.portalSettings.perm
+                 || $ctrl.settingsMenu.tags.perm
+                 || $ctrl.settingsMenu.tenants.perm
+                 || $ctrl.settingsMenu.dictionaries.perm">
+                <strong>Gateway</strong>
+            </div>
+            <ul class="aui-nav">
+              <li class="iterable-item" ui-sref-active="aui-nav-selected"
+                  ng-if="$ctrl.settingsMenu.api_logging.perm">
+                <a class="execute" ui-sref="{{$ctrl.settingsMenu.api_logging.goTo}}">API Logging</a>
+              </li>
+              <li class="iterable-item"
+                  ng-class="{'aui-nav-selected': $ctrl.$state.includes('management.settings.dictionaries')}"
+                  ng-if="$ctrl.settingsMenu.dictionaries.perm">
+                <a class="execute" ui-sref="{{$ctrl.settingsMenu.dictionaries.goTo}}">Dictionaries</a>
+              </li>
+                <li class="iterable-item" ui-sref-active="aui-nav-selected"
+                    ng-if="$ctrl.settingsMenu.tags.perm">
+                    <a class="execute" ui-sref="{{$ctrl.settingsMenu.tags.goTo}}">Sharding Tags</a>
+                </li>
+                <li class="iterable-item" ui-sref-active="aui-nav-selected"
+                    ng-if="$ctrl.settingsMenu.tenants.perm">
+                    <a class="execute" ui-sref="{{$ctrl.settingsMenu.tenants.goTo}}">Tenants</a>
+                </li>
+            </ul>
+
+            <div class="aui-nav-heading"
+                 ng-if="$ctrl.settingsMenu.users.perm
+                 || $ctrl.settingsMenu.groups.perm
+                 || $ctrl.settingsMenu.roles.perm">
+                <strong>User Management</strong>
+            </div>
+            <ul class="aui-nav">
+                <li class="iterable-item"
+                    ng-class="{'aui-nav-selected': $ctrl.$state.includes('management.settings.users') || $ctrl.$state.includes('management.settings.user') }"
+                    ng-if="$ctrl.settingsMenu.users.perm">
+                    <a class="execute" ui-sref="{{$ctrl.settingsMenu.users.goTo}}">Users</a>
+                </li>
+                <li class="iterable-item"
+                    ng-class="{'aui-nav-selected': $ctrl.$state.includes('management.settings.groups') }"
+                    ng-if="$ctrl.settingsMenu.groups.perm">
+                    <a class="execute" ui-sref="{{$ctrl.settingsMenu.groups.goTo}}">Groups</a>
+                </li>
+                <li class="iterable-item"
+                    ng-class="{'aui-nav-selected': $ctrl.$state.includes('management.settings.roles') || $ctrl.$state.includes('management.settings.rolenew') || $ctrl.$state.includes('management.settings.roleedit') || $ctrl.$state.includes('management.settings.rolemembers') }"
+                    ng-if="$ctrl.settingsMenu.roles.perm">
+                    <a class="execute" ui-sref="{{$ctrl.settingsMenu.roles.goTo}}">Roles</a>
+                </li>
+            </ul>
+
+            <div class="aui-nav-heading" ng-if="$ctrl.settingsMenu.notifications.perm || $ctrl.settingsMenu.alerts.perm">
+                <strong>Notifications</strong>
+            </div>
+            <ul class="aui-nav">
+              <li class="iterable-item" ui-sref-active="aui-nav-selected" ng-if="$ctrl.settingsMenu.notifications.perm">
+                <a class="execute" ui-sref="{{$ctrl.settingsMenu.notifications.goTo}}">Notifications</a>
+              </li>
+            </ul>
+            <ul class="aui-nav">
+              <li class="iterable-item"
+                  ng-class="{'aui-nav-selected': $ctrl.$state.includes('management.settings.alerts.list') || $ctrl.$state.includes('management.settings.alerts.alertnew') || $ctrl.$state.includes('management.settings.alerts.alert') }"
+                  ng-if="$ctrl.settingsMenu.alerts.perm">
+                <a class="execute" ui-sref="{{$ctrl.settingsMenu.alerts.goTo}}">Alerts</a>
+              </li>
+            </ul>
+        </div>
+
+        <div flex class="gv-sub-content" ui-view layout="column"></div>
+
+    </div>
+</div>
